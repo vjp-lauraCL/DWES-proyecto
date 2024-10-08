@@ -20,7 +20,7 @@
 	   	 	<ul class="nav navbar-nav">
 	   	 		<li class=" lien"><a href="index.php"><i class="fa fa-home sr-icons"></i> Home</a></li>
 	   	 		<li class="lien"><a href="about.php"><i class="fa fa-bookmark sr-icons"></i> About</a></li>
-	   	 		<li class="lien"><a href="blog.html"><i class="fa fa-file-text sr-icons"></i> Blog</a></li>
+	   	 		<li class="lien"><a href="blog.php"><i class="fa fa-file-text sr-icons"></i> Blog</a></li>
 	   	 		<li class="active"><a href="#"><i class="fa fa-phone-square sr-icons"></i> Contact</a></li>
 	   	 	</ul>
 	   	 </div>
@@ -38,30 +38,30 @@
 	       <form class="form-horizontal">
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-6">
-	       	  	    <label class="label-control">First Name</label>
+	       	  	    <label class="label-control" name = 'nombre'>First Name</label>
 	       	  		<input class="form-control" type="text">
 	       	  	</div>
 	       	  	<div class="col-xs-6">
-	       	  	    <label class="label-control">Last Name</label>
+	       	  	    <label class="label-control" name='apellido'>Last Name</label>
 	       	  		<input class="form-control" type="text">
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
-	       	  		<label class="label-control">Email</label>
+	       	  		<label class="label-control" name='email'>Email</label>
 	       	  		<input class="form-control" type="text">
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
-	       	  		<label class="label-control">Subject</label>
+	       	  		<label class="label-control" name='subject'>Subject</label>
 	       	  		<input class="form-control" type="text">
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
 	       	  		<label class="label-control">Message</label>
-	       	  		<textarea class="form-control"></textarea>
+	       	  		<textarea class="form-control" name="mensaje">Añada información</textarea>
 	       	  		<button class="pull-right btn btn-lg sr-button">SEND</button>
 	       	  	</div>
 	       	  </div>
