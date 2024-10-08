@@ -1,3 +1,3 @@
 <?php
-    require 'views/contact.php';
+    require 'views/contact.view.php.php';
 ?>
