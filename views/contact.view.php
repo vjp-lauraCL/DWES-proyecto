@@ -35,7 +35,7 @@
        	   <h1>CONTACT US</h1>
        	   <hr>
        	   <p>Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-	       <form class="form-horizontal">
+	       <form action="<? $_SERVER['PHP_SELF'] ?>" method = 'post'>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-6">
 	       	  	    <label class="label-control" name = 'nombre'>First Name</label>
