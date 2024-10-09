@@ -5,6 +5,28 @@
 <!-- Navigation Bar -->
    <nav class="navbar navbar-fixed-top navbar-default">
      <div class="container">
+		<?php
+		if(!empty($errores)):?>
+			<div class="alert alert-danger">
+				<ul>
+				<?php foreach($errores as $error): ?>
+					<li><?php echo htmlspecialchars($error)?></li>
+				<?php endforeach; ?>
+				</ul>
+			</div>
+			<?php elseif (isset($success)): ?>
+            <div class="alert alert-info">
+                <p>Formulario enviado correctamente:</p>
+                <p>Nombre: <?php echo htmlspecialchars($nombre); ?></p>
+                <p>Apellido: <?php echo htmlspecialchars($apellido); ?></p>
+                <p>Email: <?php echo htmlspecialchars($email); ?></p>
+                <p>Asunto: <?php echo htmlspecialchars($subject); ?></p>
+                <p>Mensaje: <?php echo nl2br(htmlspecialchars($message)); ?></p>
+            </div>
+        <?php endif; ?>
+		
+
+		?>
 	   	 <div class="navbar-header">
 	   	 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
 	   	 		<span class="sr-only">Toggle navigation</span>
@@ -35,33 +57,33 @@
        	   <h1>CONTACT US</h1>
        	   <hr>
        	   <p>Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-	       <form action="<? $_SERVER['PHP_SELF'] ?>" method = 'post'>
+	       <form class="form-horizontal" >
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-6">
 	       	  	    <label class="label-control" name = 'nombre'>First Name</label>
-	       	  		<input class="form-control" type="text">
+	       	  		<input class="form-control" type="text" value="<?php echo htmlspecialchars($nombre)?>">
 	       	  	</div>
 	       	  	<div class="col-xs-6">
 	       	  	    <label class="label-control" name='apellido'>Last Name</label>
-	       	  		<input class="form-control" type="text">
+	       	  		<input class="form-control" type="text" value="<?php echo htmlspecialchars($apellido)?>">
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
 	       	  		<label class="label-control" name='email'>Email</label>
-	       	  		<input class="form-control" type="text">
+	       	  		<input class="form-control" type="text" value="<?php echo htmlspecialchars($email)?>">
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
 	       	  		<label class="label-control" name='subject'>Subject</label>
-	       	  		<input class="form-control" type="text">
+	       	  		<input class="form-control" type="text" value="<?php echo htmlspecialchars($subject)?>">
 	       	  	</div>
 	       	  </div>
 	       	  <div class="form-group">
 	       	  	<div class="col-xs-12">
 	       	  		<label class="label-control">Message</label>
-	       	  		<textarea class="form-control" name="mensaje">Añada información</textarea>
+	       	  		<textarea class="form-control" name="mensaje"><?php echo htmlspecialchars($message)?></textarea>
 	       	  		<button class="pull-right btn btn-lg sr-button">SEND</button>
 	       	  	</div>
 	       	  </div>
