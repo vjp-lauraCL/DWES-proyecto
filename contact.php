@@ -1,11 +1,17 @@
 <?php
+$nombre = $apellido = $email = $subject = $message = '';
+$errores = [];
+$exito = false;
+
     if($_SERVER['REQUEST_METHOD'] ==='POST'){
-        $nombre = $_POST['nombre'] ?? ' ';
-        $apellido = $_POST['apellido'] ?? ' ';
-        $email = $_POST['email'] ?? ' ';
-        $subject = $_POST['subject'] ?? ' ';
-        $message = $_POST['message'] ?? ' ';
-        $errores = [];
+        list($nombre, $apellido, $email, $subject, $message) = [
+            $_POST['nombre'] ?? ' ',
+            $_POST['apellido'] ?? ' ',
+            $_POST['email'] ?? ' ',
+            $_POST['subject'] ?? ' ',
+            $_POST['message'] ?? ' '
+        ];
+      
 
     if(empty($email) ||filter_var($email, FILTER_VALIDATE_EMAIL)){
         $errores[] = 'Por favor ingresa un correo valido';
@@ -23,6 +29,10 @@
         /**Limpiamos el formulario */
         $nombre = $apellido = $email = $subject = $message = '';
     }
+    
+
 }
+
     require 'views/contact.view.php';
 ?>
+    
