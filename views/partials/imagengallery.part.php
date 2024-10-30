@@ -1,14 +1,14 @@
-        <!-- First Category pictures -->
+<!-- First Category pictures -->
         <div id="category1" class="tab-pane active" >
               <div class="row popup-gallery">
                 <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="sol">
-                  <img class="img-responsive" src="images/index/portfolio/1.jpg" alt="First category picture">
+                  <img class="img-responsive" src="{$imagen->getUrlPortfolio()}" alt="{$imagen->getDescripcion()}">
                   <div class="behind">
                       <div class="head text-center">
                         <ul class="list-inline">
                           <li>
-                            <a class="gallery" href="images/index/gallery/1.jpg" data-toggle="tooltip" data-original-title="Quick View">
+                            <a class="gallery" href="{$imagen->getUrlGallery()}" data-toggle="tooltip" data-original-title="Quick View">
                               <i class="fa fa-eye"></i>
                             </a>
                           </li>
@@ -31,9 +31,9 @@
                       </div>
                       <div class="row box-content">
                         <ul class="list-inline text-center">
-                          <li><i class="fa fa-eye"></i> 1000</li>
-                          <li><i class="fa fa-heart"></i> 500</li>
-                          <li><i class="fa fa-download"></i> 100</li>
+                          <li><i class="fa fa-eye <?php echo $numVisualizaciones?>"></i> 1000</li>
+                          <li><i class="fa fa-heart <?php echo $numLikes ?>"></i> 500</li>
+                          <li><i class="fa fa-download <?php echo $numDownloads ?>"></i> 100</li>
                         </ul>
                       </div>
                   </div>

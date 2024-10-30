@@ -29,7 +29,7 @@
           <table class="table text-center">
             <thead>
               <tr>
-                <td><a class="link active" href="#category1" data-toggle="tab">category I</a></td>
+                <td><a class="link active <?php echo esOpcionMenuActiva("/imagengallery.part.php") ? "active" : "" ?> lien" href="#category1 <?php echo esOpcionMenuActiva("/imagengallery.part.php") ? "#" : "imagengallery.part.php" ?>" data-toggle="tab">category I</a></td>
                 <td><a class="link" href="#category2" data-toggle="tab">category II</a></td>
                 <td><a class="link" href="#category3" data-toggle="tab">category III</a></td>
               </tr>
