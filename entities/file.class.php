@@ -25,7 +25,12 @@ class File{
                 }
             }
         }
-        if(in_array($this->file['type'], $arrTypes)===false){}
+        if(in_array($this->file['type'], $arrTypes)===false){
+
+        }
+    }
+    public function getFileName(){
+        return $this->fileName;
     }
 }
 
