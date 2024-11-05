@@ -1,5 +1,7 @@
 <?php
     function getErrorStrings($error) {
+        define ('ERROR_EXECUTE_STATMENT', 10);
+
         $errorDevuelto = match ($error) {
             UPLOAD_ERR_OK => "No hay ningún error.",
             UPLOAD_ERR_INI_SIZE => "El fichero es demasiado grande.",
@@ -12,7 +14,8 @@
             'FICHERO_NO_SELECCIONADO' => "Debes seleccionar un fichero",
             'FICHERO_NO_SOPORTADO' => "Tipo de fichero no soportado",
             'ARCHIVO_NO_PUEDE_SUBIR_FORMULARIO' => "El archivo no se ha podido subir mediante el formulario.",
-            'FICHERO_NO_PUEDE_MOVER_DESTINO' => "No se puede mover el fichero a su destino."
+            'FICHERO_NO_PUEDE_MOVER_DESTINO' => "No se puede mover el fichero a su destino.",
+            'ERROR_EXECUTE_STATMENT' => "No se ha podido ejecutar la consulta"
         };
 
         return $errorDevuelto;

@@ -41,6 +41,33 @@
             </form>
             <hr class="divider">
             <div class="imagenes_galeria"></div>
+            <!--Metemos aquí la tabla-->
+            <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Visualizaciones</th>
+                        <th scope="col">Likes</th>
+                        <th scope="col">Descargas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                     <?php foreach($imagenes as $imagen): ?>
+                        <tr>
+                            <th scope="row"><?=$iamgen->getId()?></th>
+                            <td>
+                                <img src="<?= $imagen->getUrlGallery() ?>"
+                                alt="<?= $imagen->getDescripcion() ?>"
+                                title="<?= $imagen->getDescripcion() ?>"
+                            </td>
+                            <td><?$imagen->getNumVisualizaciones()?></td>
+                            <td><?$imagen->getNumLikes()?></td>
+                            <td><?$imagen->getNumDownloads()?>
+                        </tr>
+
+                        <?php endforeach; ?>
+                    </table>
         </div>
     </div>
 </div>
