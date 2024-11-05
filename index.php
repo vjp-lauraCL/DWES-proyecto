@@ -14,6 +14,16 @@
         $imagen[]= new imagenGaleria($i. '.jpg', 'descripcion imagen ' . $i. rand(1, 2000), rand(1, 2000), rand(1, 2000));
     }
 
+        // ASOCIADOS
+        for ($i = 1; $i <= 4; $i++) {
+            $nombre = $i . '.jpg';
+            $logo = 'log' . $i . '.jpg';
+            $descripcion = 'descripción ' . $i;
+    
+            // CREO EL OBJETO (Partner))
+            $asociados[] = new  Partner($nombre, $logo, $descripcion);
+        }
+
 
 
 

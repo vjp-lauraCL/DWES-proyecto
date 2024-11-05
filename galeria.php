@@ -1,15 +1,29 @@
 <?php
-require 'utils/utils.php';
+    require 'entities/File.class.php';
+    require 'entities/ImagenGaleria.class.php';
 
+    $errores = [];
+    $descripcion = '';
+    $mensaje = '';
 
-$errores = [];
-$descripcion = '';
-$mensaje = '';
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        try {
+            $descripcion = trim(htmlspecialchars($_POST['descripcion']));
+            $tiposAceptados = ['image/jpeg', 'image/jpg', 'image/gif', 'image/png'];
+            $imagen = new File('imagen', $tiposAceptados);
 
-if($_SERVER['REQUEST_METHOD']==='POST'){
-    $descripcion = trim(htmlspecialchars($_POST['descripcion']));
-    $mensaje = 'Datos enviados';
-}
+            // El parametro (filename) es 'imagen' por que así se lo indicamos en el
+            // formulario (type = "file" name = "imagen")
+            $imagen ->saveUploadFile(ImagenGaleria::RUTA_IMAGENES_GALLERY);
+            $imagen->copyFile(ImagenGaleria::RUTA_IMAGENES_GALLERY, ImagenGaleria::RUTA_IMAGENES_PORTFOLIO);
+            $mensaje = 'Datos enviados';
+        }
+        catch (FileException $exception) {
+            // Guardo en un array los errores
+            $errores[] = $exception->getMessage();
+        }
+    }
+
 
 require 'views/galeria.view.php';
 
