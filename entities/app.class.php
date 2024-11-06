@@ -12,7 +12,14 @@ class App{
         if(!array_key_exists($key, self::$container)){
             throw new AppException("No se ha encontrado la clave con el contenedor");
         }
-        return static :: $container[$key];
+        return static:: $container[$key];
+    }
+
+    public static function getConnection(){
+        if(!array_key_exists('connection', self::$container)){
+            self::$container['connection'] = Connection::make();
+        }
+        return static::$container['connection'];
     }
     
 }

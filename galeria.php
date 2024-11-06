@@ -6,6 +6,8 @@ require_once 'exceptions/FileException.class.php';
 require_once 'exceptions/queryExceptions.class.php'; 
 require_once 'entities/Connection.class.php';
 require_once 'entities/QueryBuilder.class.php';
+require_once 'entities/app.class.php';
+require_once 'exceptions/AppExceptions.class.php';
 //array para guardar los mensajes de los errores
 
 
@@ -14,7 +16,9 @@ $descripcion = '';
 $mensaje = '';
 try {
     $config = require_once 'app/config.php';
-    $connection = Connection::make($config['database']);
+    App::bind('config', $config);
+
+    $connection = App::getConnection();
 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -53,13 +57,9 @@ try {
 }catch (QueryExceptions $exception) {
     $errores[] = $exception->getMessage();
 }
-
-
-
-
-
-
-
+catch(AppException $exception){
+    $errores[] = $exception->getMessage();
+}
 
 require 'views/gallery.view.php';
 
