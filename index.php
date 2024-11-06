@@ -1,6 +1,7 @@
 <?php
-    require 'utils/utils.php';
-    require 'entity/imagenGaleria.class.php';
+    require_once 'utils/utils.php';
+    require_once 'entities/imagenGaleria.class.php';
+    require_once 'entities/Partner.class.php';
 
     /**
      * Creamos un array de objetos de la clase ImagenGaleria
