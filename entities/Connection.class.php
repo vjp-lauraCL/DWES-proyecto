@@ -1,16 +1,12 @@
 <?php
 class Connection{
 
-   public static function make(){
-    $opciones=[
-        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_PERSISTENT => true
-    
-    ];
-     
+   public static function make(Array $config){
    try{
-    $connection = new PDO('mysql:host=dwes.local;dbname =DWES-proyecto;charset=utf8, user, user,$opciones');
+    $connection = new PDO($config['conection']. ';dbname='.$config['name'],
+    $config['username'],
+    $config['password'],
+    $config['options']);
 
    }catch(PDOException $PDOException){
         die($PDOException->getMessage());

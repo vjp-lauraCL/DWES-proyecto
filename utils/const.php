@@ -15,7 +15,8 @@
             'FICHERO_NO_SOPORTADO' => "Tipo de fichero no soportado",
             'ARCHIVO_NO_PUEDE_SUBIR_FORMULARIO' => "El archivo no se ha podido subir mediante el formulario.",
             'FICHERO_NO_PUEDE_MOVER_DESTINO' => "No se puede mover el fichero a su destino.",
-            'ERROR_EXECUTE_STATMENT' => "No se ha podido ejecutar la consulta"
+            'ERROR_EXECUTE_STATMENT' => "No se ha podido ejecutar la consulta",
+            'ERROR_STRINGS[ERROR_APP_CORE]' => "No se ha encontrado la clave en el contenedor"
         };
 
         return $errorDevuelto;

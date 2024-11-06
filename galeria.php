@@ -13,14 +13,11 @@ $errores = [];
 $descripcion = '';
 $mensaje = '';
 try {
-    $connection = Connection::make();
+    $config = require_once 'app/config.php';
+    $connection = Connection::make($config['database']);
 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-
-
-
 
 
         $descripcion = trim(htmlspecialchars($_POST['descripcion']));
