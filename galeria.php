@@ -1,53 +1,69 @@
 <?php
-    require 'entities/File.class.php';
-    require 'entities/imagenGaleria.class.php';
-    require 'entities/conection.class.php';
+require_once 'utils/utils.php';
+require_once 'entities/file.class.php';
+require_once 'entities/imagenGaleria.class.php';
+require_once 'exceptions/FileException.class.php';
+require_once 'exceptions/queryExceptions.class.php'; 
+require_once 'entities/Connection.class.php';
+require_once 'entities/QueryBuilder.class.php';
+//array para guardar los mensajes de los errores
 
-    $errores = [];
-    $descripcion = '';
-    $mensaje = '';
+
+$errores = [];
+$descripcion = '';
+$mensaje = '';
+try {
+    $connection = Connection::make();
+
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        try {
-            $descripcion = trim(htmlspecialchars($_POST['descripcion']));
-            $tiposAceptados = ['image/jpeg', 'image/jpg', 'image/gif', 'image/png'];
-            $imagen = new File('imagen', $tiposAceptados);
 
-            // El parametro (filename) es 'imagen' por que así se lo indicamos en el
-            // formulario (type = "file" name = "imagen")
-            $imagen ->saveUploadFile(ImagenGaleria::RUTA_IMAGENES_GALLERY);
-            $imagen->copyFile(ImagenGaleria::RUTA_IMAGENES_GALLERY, ImagenGaleria::RUTA_IMAGENES_PORTFOLIO);
-            //Si llega hasta aqui se que no hay errores y se ha subido la imágen.
-            //preparamos la sentencia SQL a ejecutar
-            $connection = Connection::make();
-            $sql = "ISERT INTO imagenes (nombre, descripcion) VALUES (:nombre, :descripcion)";
-            $psoStatment = $connection->prepare($sql);
-            $arrayParametrosStatment = [':nombre'=> $imagen->getFileName(), 'descripcion'=>$descripcion];
-            //lanzamos la sentencia y vemos si se ha ejecutado correctamente.
-            $respuesta =$pdoStatment->execute($arrayParametrosStatment);
-            if($respuesta === false){
-                $errores[] = "No se ha podido guardar la imagen en la base de datos";
-            }else{
-                $descripcion='';
-                $mensaje = 'Imagen guardada'; 
-               }
-               $querySql = "Select * from iamges";
-            $queryStatment = $connection-> query($querySql);
-            while($fila = $queryStatment->fetch()){
-                echo "ID: " .$file['id'];
-                echo "Nombre: ". $fila['nombre'];
-                echo "Descripcion: ". $fila['descripcion'];
-            }
 
-            $mensaje = 'Datos enviados';
-        }
-        catch (FileException $exception) {
-            // Guardo en un array los errores
-            $errores[] = $exception->getMessage();
+
+
+
+
+        $descripcion = trim(htmlspecialchars($_POST['descripcion']));
+        $tiposAceptados = ['image/jpeg', 'image/jpg', 'image/gif', 'image/png'];
+        //tipologia MIME 'tipodearchivo/extension'
+        $imagen = new File('imagen', $tiposAceptados);
+        //el parametro fileName es 'imagen' porque asi lo indicamos en
+        //en el formulario (type='file' name='imagen')
+        $imagen->saveUploadFile(imagenGaleria::RUTA_IMAGENES_GALLERY);
+        //si llega hasta aqui, no hay errores y se ha subido la imagen
+        $imagen->copyFile(imagenGaleria::RUTA_IMAGENES_GALLERY, imagenGaleria::RUTA_IMAGENES_PORTFOLIO);
+
+
+
+
+        $sql = "INSERT INTO imagenes (nombre,descripcion) VALUES (:nombre,:descripcion)";
+        $pdoStatement = $connection->prepare($sql);
+        $parametersStatementArray = ['nombre' => $imagen->getFileName(), ':descripcion' => $descripcion];
+        //Lanzamos la sentecia y vemos si se ha ejecutado correctamente
+        $response = $pdoStatement->execute($parametersStatementArray);
+        if ($response === false) {
+            $errores[] = 'No se ha podido guardar la imagen en la base de datos.';
+        } else {
+            $descripcion = '';
+            $mensaje = 'Imagen guardada';
         }
     }
+    $queryBuilder = new QueryBuilder($connection);
+    $imagenes = $queryBuilder->findAll('imagenes', 'imagenGaleria');
+} catch (FileException $exception) {
+    $errores[] = $exception->getMessage();
+    //guardo en un array los errores
+}catch (QueryExceptions $exception) {
+    $errores[] = $exception->getMessage();
+}
 
 
-require 'views/galeria.view.php';
 
-?>
+
+
+
+
+
+require 'views/gallery.view.php';
+
+

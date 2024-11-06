@@ -12,7 +12,7 @@
         private $numDownloads;
 
         // CONSTRUCTOR PARAMETRIZADO
-        public function __construct(string $nombre, string $descripcion, int $numVisualizaciones = 0, int $numLikes = 0, int $numDownloads = 0) {
+        public function __construct(string $nombre = '', string $descripcion = '', int $numVisualizaciones = 0, int $numLikes = 0, int $numDownloads = 0) {
             $this->nombre = $nombre;
             $this->descripcion = $descripcion;
             $this->numVisualizaciones = $numVisualizaciones;
