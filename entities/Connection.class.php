@@ -1,5 +1,6 @@
 <?php
-require_once 'app/config.php'
+require_once 'app/config.php';
+require_once 'utils/const.php';
 class Connection{
 
    public static function make(){
