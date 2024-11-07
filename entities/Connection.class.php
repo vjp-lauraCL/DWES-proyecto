@@ -12,6 +12,7 @@ class Connection{
     $config['options']);
 
    }catch(PDOException $PDOException){
+      // die($PDOException->getMessage());
        throw new AppException("No se ha podido crear conexion con la BD");
    }
    return $connection;

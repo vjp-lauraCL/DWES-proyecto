@@ -1,5 +1,7 @@
 <?php
-    class ImagenGaleria {
+    require_once 'entities/database/iEntity.class.php';
+
+    class ImagenGaleria implements IEntity {
 
         const RUTA_IMAGENES_PORTFOLIO = 'images/index/portfolio/';
         const RUTA_IMAGENES_GALLERY  = 'images/index/gallery/';
@@ -10,6 +12,8 @@
         private $numVisualizaciones;
         private $numLikes;
         private $numDownloads;
+
+        private $id;
 
         // CONSTRUCTOR PARAMETRIZADO
         public function __construct(string $nombre = '', string $descripcion = '', int $numVisualizaciones = 0, int $numLikes = 0, int $numDownloads = 0) {
@@ -79,6 +83,22 @@
         // FUNCIÓN OBTENER URL GALLERY
         public function getUrlGallery() : string {
             return self::RUTA_IMAGENES_GALLERY.$this->getNombre();
+        }
+
+        public function getId(): int
+        {
+            return $this->id;
+        }
+        
+        public function toArray() : array{
+            return[
+                'id' => $this->getId(),
+                'nombre' => $this->getNombre(), 
+                'descripcion' => $this->getDescripcion(),
+                'numVisualizaciones' => $this->getNumVisualizaciones(),
+                'numLikes' => $this->getNumLikes(),
+                'numDownloads' => $this->getNumDownloads()
+            ];
         }
     }
 ?>
