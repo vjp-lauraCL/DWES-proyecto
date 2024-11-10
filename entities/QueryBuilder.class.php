@@ -1,7 +1,7 @@
 <?php
 require_once 'entities/iEntity.class.php';
+require_once 'exceptions/QueryException.class.php';
 require_once 'utils/const.php';
-require_once 'exceptions/queryExceptions.class.php';
 require_once 'entities/app.class.php';
    abstract class QueryBuilder{
         /**
@@ -30,7 +30,7 @@ require_once 'entities/app.class.php';
             $pdoStatment->execute();
         
             if($pdoStatment->execute()=== false){
-                throw new QueryException("No se ha podido ejecutar la consulta");
+                throw new QueryExceptions("No se ha podido ejecutar la consulta");
         
             }
         
@@ -48,7 +48,7 @@ require_once 'entities/app.class.php';
             $statement->execute($parameters);
             
             }catch(PDOException $exceptio){
-                throw new QueryException("Error al insertar la BD");
+                throw new QueryExceptions("Error al insertar la BD");
 
                 }
             }

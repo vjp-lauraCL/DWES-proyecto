@@ -1,6 +1,7 @@
 <?php
-    require_once __DIR__. '/../exceptions/FileException.class.php';
-    require_once __DIR__. '/../utils/const.php';
+    require __DIR__.  '../exceptions/FileException.class.php';
+    require __DIR__. '../utils/const.php';
+
 
     class File {
         private $file;
@@ -12,17 +13,17 @@
 
             // Comprobamos que es array contiene el fichero
             if (empty($this->file['name'])) {
-                throw new FileException(getErrorStrings("FICHERO_NO_SELECCIONADO"));
+                throw new FileException("No se ha subido ningún fichero");
             }
 
             // Verificamos si ha habido algún error durante la subida del fichero
             if ($this->file['error'] !== UPLOAD_ERR_OK) {
-                throw new FileException(getErrorStrings($this->file['error']));
+                throw new FileException("No se ha podido subir el fichero");
             }
 
             if (in_array($this->file['type'], $arrTypes) === false) {
                 // Error, tipo no soportado
-                throw new FileException(getErrorStrings("FICHERO_NO_SOPORTADO"));
+                throw new FileException("Tipo de fichero no soportado");
             }
         }
 
@@ -34,7 +35,7 @@
             // Comprueo que el fichero temporal con el que vamos a trabajar se
             // haya subido previamente por peticioón Post
             if (is_uploaded_file($this->file['tmp_name']) === false) {
-                throw new FileException(getErrorStrings("ARCHIVO_NO_PUEDE_SUBIR_FORMULARIO"));
+                throw new FileException("eL fichero no se ha subido correctamente");
             }
 
             // Cargamos el nombre del fichero
@@ -63,7 +64,7 @@
             // Muevo el fichero subido del directorio temporal (viene definido en php.ini)
             if (move_uploaded_file($this->file['tmp_name'], $ruta) === false) {
                 // Devuelve false si no se ha podido mover
-                throw new FileException(getErrorStrings("FICHERO_NO_PUEDE_MOVER_DESTINO"));
+                throw new FileException("El fichero no se pudo mover correctamente a " . $ruta);
             }
         }
 
