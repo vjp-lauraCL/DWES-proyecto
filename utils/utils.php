@@ -1,26 +1,30 @@
 <?php
-    /**
-     * Verifica si una opción de menú está activa comparando con la URL actual.
-    
-     */
-    function esOpcionMenuActiva(string $opcionMenu): bool {
-        if ($_SERVER['REQUEST_URI'] === $opcionMenu) {
+    // MÉTODO PARA SABER SI LA OPCIÓN DE LA CABECERA ESTÁ ACTIVA
+    function esOpcionMenuActiva(string $opcionMenu): bool{
+        $active = false;
+
+        //OBTENGO LA URL ACTUAL
+        $uri = $_SERVER['PHP_SELF'];
+
+        //VERIFICO QUE LA OPCIÓN DEL MENÚ ES IGUAL A LA DE LA URL
+        //SI ES ASI RETORNO TRUE Y SE PONE ACTIVA
+        if (strpos($uri, $opcionMenu) !== false) {
             return true;
-        } else {
-            return false;
         }
+
+        return $active;
     }
 
-    /**
-     * Verifica si alguna de las opciones de menú en un array está activa.
-     
-     */
-    function existeOpcionMenuActivaEnArray(array $opciones): bool {
-        foreach ($opciones as $opcion) {
+    function existeOpcionMenuActivaEnArray($arrayOpciones): bool {
+
+        // RECORRO EL ARRAY DE OPCIONES
+        foreach ($arrayOpciones as $opcion) {
+            // SI LA OPCIÓN QUE SE LE PASA ES LA ACTIVA SE PONE A TRUE
             if (esOpcionMenuActiva($opcion)) {
                 return true;
             }
         }
+
         return false;
     }
 

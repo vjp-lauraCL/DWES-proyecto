@@ -1,84 +1,104 @@
 <?php
- class ImagenGaleria implements IEntity{
-    const RUTA_IMAGENES_PORTFOLIO = 'images/index/portfolio/';
-    const RUTA_IMAGENES_GALLERY = 'images/index/gallery/';
+    require_once 'entities/database/iEntity.class.php';
 
-    private $nombre;
-    private $descripcion;
-    private $numeroVisualizaciones;
-    private $numeroLikes;
-    private $numeroDownloads;
+    class ImagenGaleria implements IEntity {
 
-    private $id;
+        const RUTA_IMAGENES_PORTFOLIO = 'images/index/portfolio/';
+        const RUTA_IMAGENES_GALLERY  = 'images/index/gallery/';
 
-    public function __construct(string $nombre ='',string $descripcion ='', int $numeroVisualizaciones=0, int $numeroLikes=0,int $numeroDownloads = 0){
-        $this->nombre = $nombre;
-        $this->descripcion = $descripcion;
-        $this->numeroVisualizaciones = $numeroVisualizaciones;
-        $this->numeroLikes = $numeroLikes;
-        $this->numeroDownloads = $numeroDownloads;
+        // ATRIBUTOS
+        private $nombre;
+        private $descripcion;
+        private $numVisualizaciones;
+        private $numLikes;
+        private $numDownloads;
+
+        private $id;
+
+        // CONSTRUCTOR PARAMETRIZADO
+        public function __construct(string $nombre = '', string $descripcion = '', int $numVisualizaciones = 0, int $numLikes = 0, int $numDownloads = 0) {
+            $this->nombre = $nombre;
+            $this->descripcion = $descripcion;
+            $this->numVisualizaciones = $numVisualizaciones;
+            $this->numLikes = $numLikes;
+            $this->numDownloads = $numDownloads;
+        }
+
+        // GETTERS Y SETTERS
+        public function getNombre(): string
+        {
+            return $this->nombre;
+        }
+
+        public function setNombre(string $nombre): void
+        {
+            $this->nombre = $nombre;
+        }
+
+        public function getDescripcion(): string
+        {
+            return $this->descripcion;
+        }
+
+        public function setDescripcion(string $descripcion): void
+        {
+            $this->descripcion = $descripcion;
+        }
+
+        public function getNumVisualizaciones(): int
+        {
+            return $this->numVisualizaciones;
+        }
+
+        public function setNumVisualizaciones(int $numVisualizaciones): void
+        {
+            $this->numVisualizaciones = $numVisualizaciones;
+        }
+
+        public function getNumLikes(): int
+        {
+            return $this->numLikes;
+        }
+
+        public function setNumLikes(int $numLikes): void
+        {
+            $this->numLikes = $numLikes;
+        }
+
+        public function getNumDownloads(): int
+        {
+            return $this->numDownloads;
+        }
+
+        public function setNumDownloads(int $numDownloads): void
+        {
+            $this->numDownloads = $numDownloads;
+        }
+
+        // FUNCIÓN OBTENER URL PORTFOLIO
+        public function getUrlPortfolio() : string {
+            return self::RUTA_IMAGENES_PORTFOLIO.$this->getNombre();
+        }
+
+        // FUNCIÓN OBTENER URL GALLERY
+        public function getUrlGallery() : string {
+            return self::RUTA_IMAGENES_GALLERY.$this->getNombre();
+        }
+
+        public function getId(): int
+        {
+            return $this->id;
+        }
         
+        public function toArray() : array{
+            return[
+                'id' => $this->getId(),
+                'nombre' => $this->getNombre(), 
+                'descripcion' => $this->getDescripcion(),
+                'numVisualizaciones' => $this->getNumVisualizaciones(),
+                'numLikes' => $this->getNumLikes(),
+                'numDownloads' => $this->getNumDownloads()
+            ];
+        }
     }
-    public function getNombre():string{
-        return $this->nombre;
-    }
-    public function getDescripcion():string{
-        return $this->descripcion;
-    }
-    public function getNumeroVisualizaciones():int{
-        return $this->numeroVisualizaciones;
-    }
-    public function getNumeroLikes():int{
-        return $this->numeroLikes;
-    }
-    public function getNumeroDownloads():int{
-        return $this->numeroDownloads;
-    }
-    public function setNombre(string $nombre){
-        $this->nombre = $nombre;
-    }
-    public function setDescripcion(string $descripcion){
-        $this->descripcion = $descripcion;
-    }
-    public function setNumeroVisualizaciones(int $numeroVisualizaciones){
-        $this->numeroVisualizaciones = $numeroVisualizaciones;
-    }
-    public function setNumeroLikes(int $numeroLikes){
-        $this->numeroLikes = $numeroLikes;
-    }
-    public function setNumeroDownloads(int $numeroDownloads){
-        $this->numeroDownloads = $numeroDownloads;
-    }
-     
-    /**
-     * Función para obtener el portfolio de imagenes
-     */
-    public function getUrlPortfolio():string{
-        return self::RUTA_IMAGENES_PORTFOLIO . $this->nombre;
-    }
-    /**
-     * Función para obtener la galeria de imagenes
-     */
-    public function getUrlGallery():string{
-        return self::RUTA_IMAGENES_GALLERY . $this->nombre;
-    }
-    public function getId(): int
-    {
-        return $this->id;
-    }
-    
-    public function toArray() : array{
-        return[
-            'id' => $this->getId(),
-            'nombre' => $this->getNombre(), 
-            'descripcion' => $this->getDescripcion(),
-            'numVisualizaciones' => $this->getNumeroVisualizaciones(),
-            'numLikes' => $this->getNumeroLikes(),
-            'numDownloads' => $this->getNumeroDownloads()
-        ];
-    }
-
-
- }
-
 ?>
