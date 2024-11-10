@@ -1,6 +1,6 @@
 <?php
-    require __DIR__.  '../exceptions/FileException.class.php';
-    require __DIR__. '../utils/const.php';
+     require __DIR__ . '/../exceptions/FileExceptions.class.php';
+     require __DIR__ . '/../utils/const.php';
 
 
     class File {
