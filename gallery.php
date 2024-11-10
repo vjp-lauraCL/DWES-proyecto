@@ -60,7 +60,7 @@ try {
 } catch (FileException $exception) {
     $errores[] = $exception->getMessage();
     //guardo en un array los errores
-}catch (QueryExceptions $exception) {
+}catch (QueryException $exception) {
     $errores[] = $exception->getMessage();
 }
 catch(PDOException $exception){
