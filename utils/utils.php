@@ -23,4 +23,14 @@
         }
         return false;
     }
+
+    /**
+     * Función para devolver tres elementos aleatorios de un array.
+     */
+    function obtenerTresElementosAleatorios(array $array): array{
+        shuffle($array);
+
+        return array_slice($array, 0, 3);
+        
+    }
 ?>

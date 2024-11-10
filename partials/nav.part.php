@@ -1,3 +1,7 @@
+<?php 
+require_once 'utils/utils.php';
+?>
+
 <!-- Navigation Bar -->
 <nav class="navbar navbar-fixed-top navbar-default">
   <div class="container">
@@ -38,6 +42,7 @@
             <i class="fa fa-phone-square sr-icons"></i> Contact
         </a>
     </li>
+    <li class="<?= esOpcionMenuActiva('/gallery.php') ? 'active' : ''; ?> lien"><a href="gallery.php"><i class="fa fa-image sr-icons"></i> Gallery</a></li>
 </ul>
     </div>
   </div>

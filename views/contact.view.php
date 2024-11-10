@@ -1,6 +1,6 @@
 <?php
-  include __DIR__ .'/partials/inicio-doc.part.php';
-  include __DIR__ .'/partials/nav.part.php';
+  include __DIR__ .'partials/inicio-doc.part.php';
+  include __DIR__ .'partials/nav.part.php';
 ?>
 
 
@@ -12,24 +12,6 @@
             <hr>
             <p>Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
 
-            <?php if (!empty($errores)): ?>
-                <div class="alert alert-danger">
-                    <ul>
-                        <?php foreach ($errores as $error): ?>
-                            <li><?php echo htmlspecialchars($error); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            <?php elseif (isset($exito)): ?>
-                <div class="alert alert-info">
-                    <p>Formulario enviado correctamente:</p>
-                    <p>Nombre: <?php echo htmlspecialchars($nombre); ?>
-                    Apellido: <?php echo htmlspecialchars($apellido); ?>
-                    Email: <?php echo htmlspecialchars($email); ?>
-                    Asunto: <?php echo htmlspecialchars($subject); ?>
-                    Mensaje: <?php htmlspecialchars($message); ?></p>
-                </div>
-            <?php endif; ?>
 
             <form class="form-horizontal" action="contact.php" method="post">
                 <div class="form-group">
