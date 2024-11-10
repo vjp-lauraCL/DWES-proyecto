@@ -1,6 +1,7 @@
 <?php include __DIR__ . '/partials/inicio-doc.part.php' ?>
 <?php include __DIR__ . '/partials/nav.part.php' ?>
 
+
 <!-- Principal Content Start -->
 <div id="index">
 
@@ -36,25 +37,29 @@
 
     <!-- Navigation Table Content -->
     <div class="tab-content">
-      <?php
-        $categorias = [
-                        ["id" => "category1", "isActive" => "active"],
-                        ["id" => "category2", "isActive" => ""],
-                        ["id" => "category3", "isActive" => ""]
-                      ];
+  <?php
+    $categorias = [
+                    ["id" => "category1", "isActive" => "active"],
+                    ["id" => "category2", "isActive" => ""],
+                    ["id" => "category3", "isActive" => ""]
+                  ];
 
-        foreach ($categorias as $categoria) {
-          $idCategoria = $categoria["id"];
-          $isActive = $categoria["isActive"];
-          $imagenes = $imagenesGaleria;
+    if (isset($imagenesGaleria) && is_array($imagenesGaleria)) {
+      foreach ($categorias as $categoria) {
+        $idCategoria = $categoria["id"];
+        $isActive = $categoria["isActive"];
+        $imagenes = $imagenesGaleria;
 
-          // MEZCLO LOS ELEMENTOS DEL ARRAY
-          shuffle($imagenes);
-                
-          require 'partials/imagegallery.part.php';
-        }
-      ?>
-    </div>
+        // MEZCLO LOS ELEMENTOS DEL ARRAY
+        shuffle($imagenes);
+              
+        require 'partials/imagegallery.part.php';
+      }
+    } else {
+      echo "No hay imágenes disponibles.";
+    }
+  ?>
+</div>
     <!-- End of Navigation Table Content -->
   </div><!-- End of Index-body box -->
 
@@ -84,9 +89,9 @@
         <h4>Our Main Partners</h4>
         <hr>
         <div class="text-muted text-left">
-          <?php
+          <!-- <?php
             require_once 'partials/partner.part.php';
-          ?>
+          ?> -->
         </div>
       </div>
     </div>

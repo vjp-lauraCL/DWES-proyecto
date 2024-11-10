@@ -30,7 +30,7 @@ require_once 'entities/app.class.php';
             $pdoStatment->execute();
         
             if($pdoStatment->execute()=== false){
-                throw new QueryExceptions("No se ha podido ejecutar la consulta");
+                throw new QueryException("No se ha podido ejecutar la consulta");
         
             }
         
@@ -48,7 +48,7 @@ require_once 'entities/app.class.php';
             $statement->execute($parameters);
             
             }catch(PDOException $exceptio){
-                throw new QueryExceptions("Error al insertar la BD");
+                throw new QueryException("Error al insertar la BD");
 
                 }
             }
