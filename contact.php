@@ -1,16 +1,11 @@
 <?php
 
-require 'utils/utils.php'; // utils antes que view
-require 'views/contact.view.php';
-
-
 $errores = [];
 $nombre = '';
 $apellido = '';
 $email = '';
 $subject = '';
 $texto = '';
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Guardamos los datos del formulario con trim para quitar espacios al principio y final
@@ -20,10 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $subject = isset($_POST['subject']) ? htmlspecialchars(trim($_POST['subject'])) : '';
     $texto = isset($_POST['texto']) ? htmlspecialchars(trim($_POST['texto'])) : '';
 
-
     // Validamos los campos obligatorios
-    if (empty($texto)) {
-        $errores[] = "El campo texto no puede estar vacío.";
+    if (empty($nombre)) {
+        $errores[] = "El campo First Name no puede estar vacío.";
     }
     if (empty($email)) {
         $errores[] = "El campo Email no puede estar vacío.";
@@ -34,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errores[] = "El campo Subject no puede estar vacío.";
     }
 }
-
 
 // Función para mostrar el mensaje de error o éxito directamente
 function mostrarMensaje($errores, $nombre, $apellido, $email, $subject, $texto)
@@ -57,7 +50,7 @@ function mostrarMensaje($errores, $nombre, $apellido, $email, $subject, $texto)
         echo "</div>";
     }
 }
-
+require 'utils/utils.php'; // utils antes que view
+require 'views/contact.view.php';
 
 ?>
-    
