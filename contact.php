@@ -1,5 +1,8 @@
 <?php
 
+require 'utils/utils.php'; // utils antes que view
+require 'views/contact.view.php';
+
 
 $errores = [];
 $nombre = '';
@@ -54,8 +57,6 @@ function mostrarMensaje($errores, $nombre, $apellido, $email, $subject, $texto)
         echo "</div>";
     }
 }
-require 'utils/utils.php'; // utils antes que view
-require 'views/contact.view.php';
 
 
 ?>

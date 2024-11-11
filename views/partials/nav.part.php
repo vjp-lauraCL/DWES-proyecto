@@ -21,7 +21,6 @@
             <li class="<?= existeOpcionMenuActivaEnArray(['blog', 'single_post']) ? 'active' : ''; ?> lien"><a href="blog.php"><i class="fa fa-file-text sr-icons"></i> Blog</a></li>
             <li class="<?= esOpcionMenuActiva('contact') ? 'active' : ''; ?> lien"><a href="contact.php"><i class="fa fa-phone-square sr-icons"></i> Contact</a></li>
             <li class="<?= esOpcionMenuActiva('/gallery.php') ? 'active' : ''; ?> lien"><a href="gallery.php"><i class="fa fa-image sr-icons"></i> Gallery</a></li>
-            <li class="<?= esOpcionMenuActiva('/partner.php') ? 'active' : ''; ?>"><a href="partner.php"><i class="fa fa-hand-o-right sr-icons"></i> Partner</a></li>
           </ul>
        </div>
      </div>
