@@ -50,7 +50,7 @@
         $isActive = $categoria["isActive"];
         $imagenes = $imagenesGaleria;
 
-        // MEZCLO LOS ELEMENTOS DEL ARRAY
+
         shuffle($imagenes);
               
         require 'partials/imagegallery.part.php';

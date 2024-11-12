@@ -12,16 +12,18 @@
         private $numVisualizaciones;
         private $numLikes;
         private $numDownloads;
+        private $categoria;
 
         private $id;
 
         // CONSTRUCTOR PARAMETRIZADO
-        public function __construct(string $nombre = '', string $descripcion = '', int $numVisualizaciones = 0, int $numLikes = 0, int $numDownloads = 0) {
+        public function __construct(string $nombre = '', string $descripcion = '', int $numVisualizaciones = 0, int $numLikes = 0, int $numDownloads = 0, int $categoria = 0) {
             $this->nombre = $nombre;
             $this->descripcion = $descripcion;
             $this->numVisualizaciones = $numVisualizaciones;
             $this->numLikes = $numLikes;
             $this->numDownloads = $numDownloads;
+            $this->categoria = $categoria;
         }
 
         // GETTERS Y SETTERS
@@ -74,6 +76,14 @@
         {
             $this->numDownloads = $numDownloads;
         }
+        public function getCategoria(): int
+        {
+            return $this->categoria;
+        }
+        public function setCategoria(int $categoria): void
+        {
+            $this->categoria = $categoria;
+        }
 
         // FUNCIÓN OBTENER URL PORTFOLIO
         public function getUrlPortfolio() : string {
@@ -85,7 +95,7 @@
             return self::RUTA_IMAGENES_GALLERY.$this->getNombre();
         }
 
-        public function getId(): int
+        public function getId()
         {
             return $this->id;
         }
@@ -97,7 +107,8 @@
                 'descripcion' => $this->getDescripcion(),
                 'numVisualizaciones' => $this->getNumVisualizaciones(),
                 'numLikes' => $this->getNumLikes(),
-                'numDownloads' => $this->getNumDownloads()
+                'numDownloads' => $this->getNumDownloads(), 
+                'categoria' => $this->getCategoria()
             ];
         }
     }

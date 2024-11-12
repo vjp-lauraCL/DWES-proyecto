@@ -33,6 +33,18 @@
                 </div>
                 <div class="form-group">
                     <div class="col-xs-12">
+                        <label for="categoria" class="label-control">Categoria</label>
+                        <select name="categoria" class="form-control">
+                        <?php foreach ($categorias as $categoria) : ?>
+                            <option value="<?=$categoria->getId() ?>">
+                                <?= $categoria->getNombre() ?>
+                            </option>
+                        <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
                         <label class="label-control" for="descripcion">Descripcion</label>
                         <textarea class="form-control" name="descripcion" id="descripcion"><?= $descripcion ?></textarea>
                         <button class="pull-right btn btn-lg sr-button">ENVIAR</button>
@@ -47,6 +59,7 @@
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">Imagen</th>
+                        <th scope="col">Categoria</th>
                         <th scope="col">Visualizaciones</th>
                         <th scope="col">Likes</th>
                         <th scope="col">Descargas</th>
@@ -60,10 +73,13 @@
                                 <img src="<?= $imagen->getUrlGallery() ?>"
                                 alt="<?= $imagen->getDescripcion() ?>"
                                 title="<?= $imagen->getDescripcion() ?>"
+                                width="100px">
                             </td>
+                            <td><?= $categorias[$imagen->getCategoria()-1]->getNombre() ?></td>
+                            <td><?$imagen->getCategoria()?></td>
                             <td><?$imagen->getNumVisualizaciones()?></td>
                             <td><?$imagen->getNumLikes()?></td>
-                            <td><?$imagen->getNumDownloads()?>
+                            <td><?$imagen->getNumDownloads()?> </td>
                         </tr>
 
                         <?php endforeach; ?>

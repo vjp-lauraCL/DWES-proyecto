@@ -6,6 +6,7 @@
         {
           parent::__construct($table, $classEntity); 
         }
+
     }
 
 ?>
