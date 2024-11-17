@@ -32,7 +32,7 @@
         }
 
         public function saveUploadFile(string $rutaDestino) {
-            // Comprueo que el fichero temporal con el que vamos a trabajar se
+            // Comprobamos que el fichero temporal con el que vamos a trabajar se
             // haya subido previamente por peticioón Post
             if (is_uploaded_file($this->file['tmp_name']) === false) {
                 throw new FileException("eL fichero no se ha subido correctamente");

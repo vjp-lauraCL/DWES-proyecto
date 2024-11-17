@@ -1,4 +1,8 @@
 <?php
+/**
+ * Configuración de la base de datos
+ * Esta base de datos la hemos creado en myphpadmin
+ */
 return [
     "database" =>[
         "name" => "proyecto", 

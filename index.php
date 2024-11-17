@@ -1,7 +1,7 @@
 <?php
     require_once 'utils/utils.php';
     require_once 'entities/imagenGaleria.class.php';
-    require_once 'entities/Partner.class.php';
+    require_once 'entities/partner.class.php';
 
     /**
      * Creamos un array de objetos de la clase ImagenGaleria
@@ -16,13 +16,24 @@
     }
 
         // ASOCIADOS
+        $asociados = [];
         for ($i = 1; $i <= 4; $i++) {
             $nombre = $i . '.jpg';
             $logo = 'log' . $i . '.jpg';
             $descripcion = 'descripción ' . $i;
-    
-            // CREO EL OBJETO (Partner))
-            $asociados[] = new  Partner($nombre, $logo, $descripcion);
+        
+            // CREO EL OBJETO (Partner)
+            $asociados[] = new Partner($nombre, $logo, $descripcion);
+        }
+        
+        // Definir la variable $arrayPartners
+        $arrayPartners = $asociados;
+
+        /**
+         * Creamos una función para obtener los tres asociados
+         */
+        function obtenerTresPartners($arrayPartners) {
+            return array_slice($arrayPartners, 0, 3);
         }
 
 

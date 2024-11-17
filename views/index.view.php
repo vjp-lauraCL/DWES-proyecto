@@ -37,28 +37,61 @@
 
     <!-- Navigation Table Content -->
     <div class="tab-content">
-  <?php
-    $categorias = [
-                    ["id" => "category1", "isActive" => "active"],
-                    ["id" => "category2", "isActive" => ""],
-                    ["id" => "category3", "isActive" => ""]
-                  ];
+      <!-- First Category pictures -->
 
-    if (isset($imagenesGaleria) && is_array($imagenesGaleria)) {
-      foreach ($categorias as $categoria) {
-        $idCategoria = $categoria["id"];
-        $isActive = $categoria["isActive"];
-        $imagenes = $imagenesGaleria;
+      <?php
+$idCategory = 'category1';
+$estaActiva = 'active';
 
+// Verifica si $imagenes está definida y es un array
+if (isset($imagenes) && is_array($imagenes)) {
+    shuffle($imagenes);
+} else {
+    $imagenes = []; // Inicializa $imagenes como un array vacío si no está definida
+}
 
-        shuffle($imagenes);
-              
-        require 'partials/imagegallery.part.php';
-      }
-    } else {
-      echo "No hay imágenes disponibles.";
-    }
-  ?>
+include __DIR__ . '/partials/imagengallery.part.php';
+?>
+
+<!-- End of First category pictures -->
+
+<!--second category pictures -->
+
+<?php
+$idCategory = 'category2';
+$estaActiva = '';
+
+// Verifica si $imagenes está definida y es un array
+if (isset($imagenes) && is_array($imagenes)) {
+    shuffle($imagenes);
+} else {
+    $imagenes = []; // Inicializa $imagenes como un array vacío si no está definida
+}
+
+include __DIR__ . '/partials/imagengallery.part.php';
+?>
+
+<!-- End of second category pictures -->
+
+<!-- Third Category Pictures -->
+
+<?php
+$idCategory = 'category3';
+$estaActiva = '';
+
+// Verifica si $imagenes está definida y es un array
+if (isset($imagenes) && is_array($imagenes)) {
+    shuffle($imagenes);
+} else {
+    $imagenes = []; // Inicializa $imagenes como un array vacío si no está definida
+}
+
+include __DIR__ . '/partials/imagengallery.part.php';
+?>
+
+<!-- Third Category Pictures -->
+
+      <!-- Third Category Pictures -->
 </div>
     <!-- End of Navigation Table Content -->
   </div><!-- End of Index-body box -->
@@ -78,27 +111,9 @@
   </div>
   <!-- End of Newsletter form -->
 
-  <!-- Box within partners name and logo -->
-  <div class="last-box row">
-    <div class="col-xs-12 col-sm-4 col-sm-push-4 last-block">
-      <div class="partner-box text-center">
-        <p>
-          <i class="fa fa-map-marker fa-2x sr-icons"></i>
-          <span class="text-muted">35 North Drive, Adroukpape, PY 88105, Agoe Telessou</span>
-        </p>
-        <h4>Our Main Partners</h4>
-        <hr>
-        <div class="text-muted text-left">
-          <!-- <?php
-            require_once 'partials/partner.part.php';
-          ?> -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End of Box within partners name and logo -->
-
-</div><!-- End of index box -->
+ <?php
+  require_once 'partials/partners.part.php';
+ ?>
 
 <!-- Footer -->
 <footer class="home-page">
