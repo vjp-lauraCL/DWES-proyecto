@@ -17,7 +17,7 @@
         private $id;
 
         // CONSTRUCTOR PARAMETRIZADO
-        public function __construct(string $nombre = '', string $descripcion = '', int $numVisualizaciones = 0, int $numLikes = 0, int $numDownloads = 0, int $categoria = 0) {
+        public function __construct(string $nombre = '', string $descripcion = '', $categoria = 0,int $numVisualizaciones = 0, int $numLikes = 0, int $numDownloads = 0) {
             $this->nombre = $nombre;
             $this->descripcion = $descripcion;
             $this->numVisualizaciones = $numVisualizaciones;
@@ -76,11 +76,11 @@
         {
             $this->numDownloads = $numDownloads;
         }
-        public function getCategoria(): int
+        public function getCategoria(): string
         {
             return $this->categoria;
         }
-        public function setCategoria(int $categoria): void
+        public function setCategoria( $categoria): void
         {
             $this->categoria = $categoria;
         }
