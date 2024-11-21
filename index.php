@@ -12,7 +12,7 @@
 
     $imagen=[];
     for($i=1; $i<=12; $i++){
-        $imagen[]= new imagenGaleria($i. '.jpg', 'descripcion imagen ' . $i. rand(1, 2000), rand(1, 2000), rand(1, 2000));
+        $imagen[]= new ImagenGaleria($i. '.jpg', 'descripcion imagen '. $i,0, rand(1, 2000), rand(1, 2000), rand(1, 2000));
     }
 
         // ASOCIADOS
