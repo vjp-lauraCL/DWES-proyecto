@@ -2,17 +2,17 @@
  include_once './entities/imagenGaleria.class.php';
  include_once './index.php';
 ?>
-<div id="<?php echo $idCategoria; ?>" class="tab-pane <?php echo $isActive; ?>">
+<div id="<?php echo $idCategory; ?>" class="tab-pane <?php echo $estaActiva; ?>">
     <div class="row popup-gallery">
-        <?php foreach ($imagenes as $imagen): ?>
+        <?php foreach ($imagen as $img): ?>
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="sol">
-                    <img class="img-responsive" src="<?php echo $imagen->getUrlPortfolio(); ?>" alt="<?php echo $imagen->getDescripcion(); ?>">
+                    <img class="img-responsive" src="<?php echo $img->getUrlPortfolio(); ?>" alt="<?php echo $img->getDescripcion(); ?>">
                     <div class="behind">
                         <div class="head text-center">
                             <ul class="list-inline">
                                 <li>
-                                    <a class="gallery" href="<?php echo $imagen->getUrlGallery(); ?>" data-toggle="tooltip" data-original-title="Quick View">
+                                    <a class="gallery" href="<?php echo $img->getUrlGallery(); ?>" data-toggle="tooltip" data-original-title="Quick View">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                 </li>
@@ -35,9 +35,9 @@
                         </div>
                         <div class="row box-content">
                             <ul class="list-inline text-center">
-                                <li><i class="fa fa-eye"></i> <?php echo $imagen->getNumVisualizaciones(); ?></li>
-                                <li><i class="fa fa-heart"></i> <?php echo $imagen->getNumLikes(); ?></li>
-                                <li><i class="fa fa-download"></i> <?php echo $imagen->getNumDownloads(); ?></li>
+                                <li><i class="fa fa-eye"></i> <?php echo $img->getNumVisualizaciones(); ?></li>
+                                <li><i class="fa fa-heart"></i> <?php echo $img->getNumLikes(); ?></li>
+                                <li><i class="fa fa-download"></i> <?php echo $img->getNumDownloads(); ?></li>
                             </ul>
                         </div>
                     </div>

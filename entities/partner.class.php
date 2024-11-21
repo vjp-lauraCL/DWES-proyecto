@@ -5,6 +5,7 @@
         private $nombre;
         private $logo;
         private $descripcion;
+        const RUTA_IMAGENES_GALLERY  = 'images/index/';
 
         // CONSTRUCTOR PARAMETRIZADO
         public function __construct(string $nombre, string $logo, string $descripcion) {
@@ -26,7 +27,7 @@
 
         public function getLogo(): string
         {
-            return $this->logo;
+            return self::RUTA_IMAGENES_GALLERY.$this->logo;
         }
 
         public function setLogo(string $logo): void
