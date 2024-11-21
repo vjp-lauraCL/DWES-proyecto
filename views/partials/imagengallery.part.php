@@ -2,6 +2,9 @@
  include_once './entities/imagenGaleria.class.php';
  include_once './index.php';
 ?>
+
+<!-- La clase $esActiva hacía que no se mostraran las imágenes del home. Para saber de donde viene tenemos que ir a index.view.php en 
+ la sección de las categorías. Definimos la variable. En la primera linea de este código corresponde a esa variable. -->
 <div id="<?php echo $idCategory; ?>" class="tab-pane <?php echo $estaActiva; ?>">
     <div class="row popup-gallery">
         <?php foreach ($imagen as $img): ?>
