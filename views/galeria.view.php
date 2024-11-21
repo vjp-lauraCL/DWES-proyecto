@@ -55,35 +55,41 @@
             <div class="imagenes_galeria"></div>
             <!--Metemos aquí la tabla-->
             <table class="table">
-                    <thead>
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Imagen</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Visualizaciones</th>
-                        <th scope="col">Likes</th>
-                        <th scope="col">Descargas</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                     <?php foreach($imagenes as $imagen): ?>
-                        <tr>
-                            <th scope="row"><?=$iamgen->getId()?></th>
-                            <td>
-                                <img src="<?= $imagen->getUrlGallery() ?>"
-                                alt="<?= $imagen->getDescripcion() ?>"
-                                title="<?= $imagen->getDescripcion() ?>" width="100px">
-                            </td>
-
-                            <td><?= $categorias[$imagen->getCategoria()-1]->getNombre()?></td>
-                            <td><?$imagen->getNumVisualizaciones()?></td>
-                            <td><?$imagen->getNumLikes()?></td>
-                            <td><?$imagen->getNumDownloads()?> </td>
-                        </tr>
-
-                        <?php endforeach; ?>
-                    </tbody>
-                    </table>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Visualizaciones</th>
+            <th scope="col">Likes</th>
+            <th scope="col">Descargas</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($imagenes as $imagen): ?>
+        <tr>
+            <th scope="row"><?= $imagen->getId() ?></th>
+            <td>
+                <img src="<?= $imagen->getUrlGallery() ?>"
+                     alt="<?= $imagen->getDescripcion() ?>"
+                     title="<?= $imagen->getDescripcion() ?>" width="100px">
+            </td>
+            <td>
+                <?php 
+                $categoriaIndex = $imagen->getCategoria() - 1;
+                if (isset($categorias[$categoriaIndex])) {
+                    echo $categorias[$categoriaIndex]->getNombre();
+                } else {
+                    echo "Categoría no encontrada";
+                }
+                ?></td>
+            <td><?= $imagen->getNumVisualizaciones() ?></td>
+            <td><?= $imagen->getNumLikes() ?></td>
+            <td><?= $imagen->getNumDownloads() ?> </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
         </div>
     </div>
 </div>
