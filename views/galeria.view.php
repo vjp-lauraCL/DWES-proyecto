@@ -72,17 +72,17 @@
                             <td>
                                 <img src="<?= $imagen->getUrlGallery() ?>"
                                 alt="<?= $imagen->getDescripcion() ?>"
-                                title="<?= $imagen->getDescripcion() ?>"
-                                width="100px">
+                                title="<?= $imagen->getDescripcion() ?>" width="100px">
                             </td>
-                            <td><?= $categorias[$imagen->getCategoria()-1]->getNombre() ?></td>
-                            <td><?$imagen->getCategoria()?></td>
+
+                            <td><?= $categorias[$imagen->getCategoria()-1]->getNombre()?></td>
                             <td><?$imagen->getNumVisualizaciones()?></td>
                             <td><?$imagen->getNumLikes()?></td>
                             <td><?$imagen->getNumDownloads()?> </td>
                         </tr>
 
                         <?php endforeach; ?>
+                    </tbody>
                     </table>
         </div>
     </div>

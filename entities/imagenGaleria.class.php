@@ -80,12 +80,16 @@
         {
             return $this->categoria;
         }
-        public function setCategoria( $categoria): void
+        public function setCategoria( $categoria)
         {
             $this->categoria = $categoria;
+
+            return $this;
         }
 
-        // FUNCIÓN OBTENER URL PORTFOLIO
+        /**
+         * Creamos una función para obtener el portfolio
+         */
         public function getUrlPortfolio() : string {
             return self::RUTA_IMAGENES_PORTFOLIO.$this->getNombre();
         }

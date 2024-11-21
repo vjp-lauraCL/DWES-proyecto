@@ -40,8 +40,8 @@
       <!-- First Category pictures -->
 
       <?php
-$idCategory = 'category1';
-$estaActiva = 'active';
+  $idCategory = 'category1';
+  $estaActiva = 'active';
 
 // Verifica si $imagenes está definida y es un array
 if (isset($imagenes) && is_array($imagenes)) {

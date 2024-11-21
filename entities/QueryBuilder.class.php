@@ -24,17 +24,16 @@ abstract class  QueryBuilder{
 
 
         $sqlStatement="Select * from $this->table";
-        // mejor prepare para evitar que metan codigo sql
-
+       /**
+        * Prepare evita que metan codigo sql 
+        */
 
         $pdoStatement=$this->connection->prepare($sqlStatement);
 
 
         if($pdoStatement->execute()===false){
 
-
             throw new QueryException(getErrorString(ERROR_EXECUTE_STATEMENT));
-
 
         }
         return $pdoStatement->fetchAll(PDO::FETCH_CLASS,$this->classEntity);
@@ -43,8 +42,9 @@ abstract class  QueryBuilder{
     public function save(IEntity $entity): void{
         try{
         $parameters =$entity->toArray();
-
-
+/**
+ * Insertamos valores en la tabla. En nuestro caso será el nombre, la descripcion y el id.
+ */
         $sql = sprintf('insert into %s (%s) values(%s)',
         $this->table,
         implode(', ',array_keys($parameters)),
@@ -68,7 +68,7 @@ abstract class  QueryBuilder{
             $sql = "UPDATE categorias SET numImagenes = numImagenes+1 WHERE id = $categoria";
             $this->connection->exec($sql);
             $this->connection->commit();
-        }catch(PDOException $exception){
+        }catch(Exception $exception){
             $this->connection->rollBack();
             throw new Exception($exception->getMessage());
         }

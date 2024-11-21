@@ -1,5 +1,6 @@
 <?php
     require_once 'entities/QueryBuilder.class.php';
+    require_once 'entities/Categoria.class.php';
 /**
  * Creamos la clase categoriaRepositorio 
  */
