@@ -1,3 +1,7 @@
+<?php
+ include_once './entities/imagenGaleria.class.php';
+ include_once './index.php';
+?>
 <div id="<?php echo $idCategoria; ?>" class="tab-pane <?php echo $isActive; ?>">
     <div class="row popup-gallery">
         <?php foreach ($imagenes as $imagen): ?>

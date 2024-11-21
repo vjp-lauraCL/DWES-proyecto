@@ -32,6 +32,7 @@
         /**
          * Creamos una función para obtener los tres asociados
          */
+        
         function obtenerTresPartners($arrayPartners) {
             return array_slice($arrayPartners, 0, 3);
         }

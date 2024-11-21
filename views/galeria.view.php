@@ -75,14 +75,19 @@
                      title="<?= $imagen->getDescripcion() ?>" width="100px">
             </td>
             <td>
-                <?php 
-                $categoriaIndex = $imagen->getCategoria() - 1;
-                if (isset($categorias[$categoriaIndex])) {
-                    echo $categorias[$categoriaIndex]->getNombre();
+            <?php
+                if (isset($imagen) && isset($categorias) && is_array($categorias)) {
+                    $categoriaIndex = $imagen->getCategoria() - 1;
+                    if (isset($categorias[$categoriaIndex])) {
+                        echo $categorias[$categoriaIndex]->getNombre();
+                    } else {
+                        echo "Categoría no encontrada";
+                    }
                 } else {
-                    echo "Categoría no encontrada";
+                    echo "Datos no válidos";
                 }
-                ?></td>
+                ?>
+                </td>
             <td><?= $imagen->getNumVisualizaciones() ?></td>
             <td><?= $imagen->getNumLikes() ?></td>
             <td><?= $imagen->getNumDownloads() ?> </td>

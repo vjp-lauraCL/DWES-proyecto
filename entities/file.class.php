@@ -8,13 +8,6 @@
         private $fileName;
     
     
-    
-        /**
-         * File constructor
-         * @param string $fileName
-         * @param array $arrayTypes
-         * @throws FileException
-         */
         public function __construct(string $fileName, array $arrType){
             // con $fileName obtendremos el fichero mediante el array $_FILES que con
             //todos los ficheros que se suben al servidor mediante un formulario.
