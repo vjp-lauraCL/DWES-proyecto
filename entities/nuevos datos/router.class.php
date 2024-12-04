@@ -30,6 +30,10 @@ class Router{
             throw new NotFoundException ('No se ha encontrado la ruta');
         }
     }
+
+    public function redirect(string $path){
+        header ('location: /'.$path);
+    }
 }
 
 ?>
