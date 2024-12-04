@@ -8,6 +8,7 @@
      * El objeto será recorrido con un for y llenamos el objeto con la descripción de la imagen, el número de visualizaciones, los likes, 
      * el número de descargas. 
      * Rellenamos el array aleatoriamente con rand(). 
+     * 
      */
 
     $imagen=[];
@@ -17,14 +18,18 @@
 
         // ASOCIADOS
         $asociados = [];
-        for ($i = 1; $i <= 4; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $nombre = $i . '.jpg';
             $logo = 'log' . $i . '.jpg';
             $descripcion = 'descripción ' . $i;
         
-            // CREO EL OBJETO (Partner)
+            /**
+             * Creamos un array de objetos de la clase partner
+             */
             $asociados[] = new Partner($nombre, $logo, $descripcion);
+            
         }
+
         
         // Definir la variable $arrayPartners
         $arrayPartners = $asociados;
